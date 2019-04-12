@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="container">
+    <hr />
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="nuke();">Create New</button><br /><br /> @*kalau tombol ini di klik ntar ngeload otomatis dropdown suppliernya*@
+    <table class="table table-hover" id="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody"></tbody>
+    </table>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Item</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="Id">Id</label>
+                        <input type="text" class="form-control" id="Id" placeholder="Id" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name" />
+                        <span style="color:red" class="error">Valid name required</span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="Save" onclick="validationInsert();">Save</button>
+                <button type="button" class="btn btn-primary" id="Update" style="display:none;" onclick="validationUpdate();">Update</button>
+                <button type="button" class="btn btn-default" onclick="nuke();" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    
+<script src="~/Content/datatables/jquery.dataTables.min.js"></script>
+<link href="~/Content/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Scripts/Model Script/SupplierScript.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+}
